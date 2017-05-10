@@ -7,10 +7,12 @@ const data        = require('../data/cat_genres.json');
 
 module.exports = class Genres{
 
+    //return all JSON
     static getAllGenres(){
         return data;
     }
 
+    //receive type of genres (example - "action") and return all relevant data for specific genre
     static getSpecificGenres(cat_name){
         var cat = data.categories_genres;
         var arr =[];
@@ -21,9 +23,12 @@ module.exports = class Genres{
                 return arr;
             }
         }
-        return {"error":"Couldn't found Specific Genres"};
+        return {"error":"Couldn't found Specific Genre"};
     }
 
+    //receive year and rating and return:
+    // 1. all movies their year = to the year received and their rating >= to the rating received
+    // 2. all tv shows they broadcast between the year received and their rating >= to the rating received
      static getListYearAndRating(_year,_rating){
          var tempdata = data.categories_genres;
          var arr =[];

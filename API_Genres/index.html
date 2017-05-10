@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+</head>
+<body>
+    <h1>API for Genres VOD Web Service</h1>
+
+    <h3>Get all Genres data, click for example (no parameters required):</h3>
+    <a target="_blank" href="../getAllGenres">../getAllGenres</a>
+
+    <form name="myform" action="../getOneGenre" method="post" target="_blank">
+        <h3>Use POST to receive specific Genre data (require 'cat' parameter):</h3>
+        <p>please select one below and submit to see example</p>
+        <lable><input type="radio" name="cat" value="comedy"> Comedy</lable><br>
+        <label><input type="radio" name="cat" value="action"> Action</label><br>
+        <label><input type="radio" name="cat" value="adventure"> Adventure</label><br><br>
+        <input type="submit" name="click me"><br><br>
+        <a href="#">../getOneGenre</a>
+    </form>
+
+    <h3>Get Movies and Tv Shows by year and rating, click for example (require 'year' & 'rating' parameters):</h3>
+    <a target="_blank" href="../getListYearAndRating/1999/6.5">../getListYearAndRating/:year/:rating</a>
+    <p>notes:<br>
+     1. all movies with rating equal or higher to parameter 'rating' and their year equal to 'year' parameter will be return<br>
+     2. all Tv Shows with rating equal or higher to parameter 'rating' and their year of broadcast are in the range of 'year' parameter will be return<br>
+     3. Tv-Shows with 'end_year' = 0 indicates they still broadcast up today</p>
+
+
+</body>
+</html>
