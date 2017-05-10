@@ -45,6 +45,8 @@ module.exports = class Genres{
                      arr.push(tempdata[i].tv_shows[n]);
              }
          }
+         if(arr.length==0)
+             return {"error": "no match"};
          return arr;
 
      }

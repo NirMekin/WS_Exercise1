@@ -10,6 +10,13 @@ const   express     = require('express'),
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+//return API of WS
+app.get('/',(req,res)=>{
+    "use strict";
+    res.sendFile(__dirname + "/API_Genres/");
+})
+
 //return all data of cat_genres.json
 app.get('/getAllGenres',(req,res)=>{
     "use strict";
@@ -34,10 +41,10 @@ app.get('/getListYearAndRating/:year/:rating',(req,res)=>{
 
 })
 
-//return API of WS
-app.all('/',(req,res)=>{
+app.all('*',(req,res)=>{
     "use strict";
-    res.sendFile(__dirname + "/API_Genres/index.html");
+    res.status(404).send(`friendly 404 :)
+    Error DIR not found`);
 })
 
 app.listen(port,
