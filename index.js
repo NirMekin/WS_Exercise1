@@ -41,6 +41,7 @@ app.get('/getListYearAndRating/:year/:rating',(req,res)=>{
 
 })
 
+//friendly Page not fount ( 404 )
 app.all('*',(req,res)=>{
     "use strict";
     res.status(404).send(`friendly 404 :)
