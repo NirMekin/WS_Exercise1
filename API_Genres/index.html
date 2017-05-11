@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>API</title>
-    <link rel="stylesheet" type="text/css" href="./include/style.css">
     <style>
         body
         {
@@ -28,14 +27,14 @@
         }
         h3 span{
             border-radius: inherit;
-            background-color: black;
+            background-color:orangered;
             display: block;
             width:65px;
             text-align: center;
             margin-right: 15px;
             font-family: "Arial Narrow";
             float: left;
-            color: yellow;
+            color: snow;
         }
         .methodAPI
         {
@@ -57,15 +56,14 @@
             padding-left: 10px;
             padding-right: 10px;
             width: 700px;
-            /*margin: 0 auto;*/
+            margin-right: 2%;
             background-color: dimgray;
         }
         #container2{
-            float: right;
+            float: left;
             padding-left: 5px;
             padding-right: 5px;
             width: 400px;
-            /*margin: 0 auto;*/
             background-color: dimgray;
         }
         #notes
@@ -105,103 +103,114 @@
             background-color:gray;
             color: seashell;
         }
+        #wrapper
+        {
+            max-width: 1170px;
+            margin: 0 auto;
+        }
+        .jsonexmp span
+        {
+            color: green;
+        }
 
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>API - VOD Web Service - Genres</h1>
+    <div id="wrapper">
+        <div id="container">
+            <h1>API - VOD Web Service - Genres</h1>
 
-        <section class="methodAPI">
-            <h3><span>Get</span> receive all Genres data:</h3>
-            <a target="_blank" href="../getAllGenres">ws-excercise-vod-genres.herokuapp.com/getAllGenres</a>
-            <section class="params">no parameters required</section>
-        </section>
+            <section class="methodAPI">
+                <h3><span>GET</span> receive all Genres data:</h3>
+                <a target="_blank" href="../getAllGenres">ws-excercise-vod-genres.herokuapp.com/getAllGenres</a>
+                <section class="params">no parameters required</section>
+            </section>
 
-        <section class="methodAPI">
-            <form name="myform" action="../getOneGenre" method="post" target="_blank">
-                <h3><span>POST</span> receive specific Genre data:</h3>
-                <p>Select one below and submit to see example</p>
-                <lable><input type="radio" name="cat" value="comedy"> Comedy</lable><br>
-                <label><input type="radio" name="cat" value="action"> Action</label><br>
-                <label><input type="radio" name="cat" value="adventure"> Adventure</label><br><br>
-                <input type="submit" name="click me"><br><br>
-                <a href="#">ws-excercise-vod-genres.herokuapp.com/getOneGenre</a>
-            </form>
-            <section class="params">require parameter: 'cat'</section>
-        </section>
+            <section class="methodAPI">
+                <form name="myform" action="../getOneGenre" method="post" target="_blank">
+                    <h3><span>POST</span> receive specific Genre data:</h3>
+                    <p>Select one below and submit to see example</p>
+                    <lable><input type="radio" name="cat" value="comedy"> Comedy</lable><br>
+                    <label><input type="radio" name="cat" value="action"> Action</label><br>
+                    <label><input type="radio" name="cat" value="adventure"> Adventure</label><br><br>
+                    <input type="submit" name="click me"><br><br>
+                    <a href="#">ws-excercise-vod-genres.herokuapp.com/getOneGenre</a>
+                </form>
+                <section class="params">require parameter: 'cat'</section>
+            </section>
 
-        <section class="methodAPI">
-            <h3><span>Get</span> receive Movies and Tv Shows by year and rating:</h3>
-            <a target="_blank" href="../getListYearAndRating/1999/6.5">ws-excercise-vod-genres.herokuapp.com/getListYearAndRating/:year/:rating</a>
-            <section class="params">require parameters: 'year' & 'rating'</section>
-            <section id="notes">
+            <section class="methodAPI">
+                <h3><span>GET</span> receive Movies and Tv Shows by year and rating:</h3>
+                <a target="_blank" href="../getListYearAndRating/1999/6.5">ws-excercise-vod-genres.herokuapp.com/getListYearAndRating/:year/:rating</a>
+                <section class="params">require parameters: 'year' & 'rating'</section>
+                <section id="notes">
+                    <p>
+                        notes:<br><br>
+                        &emsp;1. movies with rating equal or higher to parameter 'rating' and their <br>&emsp;&emsp;year equal to 'year' parameter will be return<br><br>
+                        &emsp;2. Tv Shows with rating equal or higher to parameter 'rating' and their<br>&emsp;&emsp;year of broadcast are in the range of 'year' parameter will be return<br><br>
+                        &emsp;3. Tv-Shows with 'end_year' = 0 indicates they still broadcast up today<br><br>
+                        &emsp;4. The value for Key 'episodes' indicates of the amount of episodes of<br>&emsp;&emsp;specific Tv Show
+                    </p>
+                </section>
+            </section>
+        </div>
+        <div id="container2">
+            <h3>Output Examples:</h3>
+            <section class="jsonexmp">
+                <h4>Part of the module from all the JSON</h4>
                 <p>
-                    notes:<br><br>
-                    &emsp;1. movies with rating equal or higher to parameter 'rating' and their <br>&emsp;&emsp;year equal to 'year' parameter will be return<br><br>
-                    &emsp;2. Tv Shows with rating equal or higher to parameter 'rating' and their<br>&emsp;&emsp;year of broadcast are in the range of 'year' parameter will be return<br><br>
-                    &emsp;3. Tv-Shows with 'end_year' = 0 indicates they still broadcast up today
+                    <span>"categories_genres"</span>:<br>
+                    [<br>
+                    &emsp;{<br>
+                    &emsp; <span>"cat_genres"</span>:"comedy",<br>
+                    &emsp; <span>"movies"</span>:<br>
+                    &emsp; [
+                    &emsp;&emsp;{<br>
+
+                    &emsp;&emsp; <span>"name"</span>: "Johnny English ",<br>
+                    &emsp;&emsp; <span>"year"</span>: 2003,<br>
+                    &emsp;&emsp; <span>"rating"</span>: 6.1,<br>
+                    &emsp;&emsp; <span>"cast"</span>: ["Rowan Atkinson", "Tasha de Vasconcelos", "Ben Miller"]<br>
+                    &emsp;&emsp;},<br>
+                    &emsp;&emsp;{<br>
+                    &emsp;&emsp;  <span>"name"</span>: "American Pie",<br>
+                    &emsp;&emsp;  <span>"year"</span>: 1999,<br>
+                    &emsp;&emsp;  <span>"rating"</span>: 7.0,<br>
+                    &emsp;&emsp;  <span>"cast"</span>: ["Jason Biggs", "Chris Klein", "Thomas Ian Nicholas"]<br>
+                    &emsp;&emsp;}<br>
+                    &emsp; ],<br>
+                    &emsp; "tv_shows":<br>
+                    &emsp; [<br>
+                    &emsp;&emsp;{<br>
+                    &emsp;&emsp; <span>"name"</span>: "Friends",<br>
+                    &emsp;&emsp; <span>"start_year"</span>: 1994,<br>
+                    &emsp;&emsp; <span>"end_year"</span>: 2004,<br>
+                    &emsp;&emsp; <span>"rating"</span>: 9.0,<br>
+                    &emsp;&emsp; <span>"stars"</span>: ["Jennifer Aniston", "Courteney Cox", "David Schwimmer", &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"Matthew Perry", "Lisa Kudrow", "Matt LeBlanc"],<br>
+                    &emsp;&emsp; <span>"episodes"</span>: 236<br>
+                    &emsp;&emsp;},<br>
+                    &emsp;&emsp;{<br>
+                    &emsp;&emsp; <span>"name"</span>: "Two and a Half Men",<br>
+                    &emsp;&emsp; <span>"start_year"</span>: 2003,<br>
+                    &emsp;&emsp; <span>"end_year"</span>: 2015,<br>
+                    &emsp;&emsp; <span>"rating"</span>: 7.1,<br>
+                    &emsp;&emsp; <span>"stars"</span>: ["Jon Cryer", "Angus T. Jones", "Charlie Sheen", "Ashton Kutcher"],<br>
+                    &emsp;&emsp; <span>"episodes"</span>: 262<br>
+                    &emsp;&emsp;}<br>
+                    &emsp; ]<br>
+                    &emsp;<br>
+                    &emsp;}<br>
+                    ]<br>
                 </p>
             </section>
-        </section>
-    </div>
-    <div id="container2">
-        <h3>Output Examples:</h3>
-        <section class="jsonexmp">
-            <h4>Part of the module from all the JSON</h4>
-            {
-            <p>
-                "categories_genres":<br>
-                [<br>
-                &emsp;{<br>
-                &emsp; "cat_genres":"comedy",<br>
-                &emsp; "movies":<br>
-                &emsp; [
-                &emsp;&emsp;{<br>
 
-                &emsp;&emsp; "name": "Johnny English ",<br>
-                &emsp;&emsp; "year": 2003,<br>
-                &emsp;&emsp; "rating": 6.1,<br>
-                &emsp;&emsp; "cast": ["Rowan Atkinson", "Tasha de Vasconcelos", "Ben Miller"]<br>
-                &emsp;&emsp;},<br>
-                &emsp;&emsp;{<br>
-                &emsp;&emsp;  "name": "American Pie",<br>
-                &emsp;&emsp;  "year": 1999,<br>
-                &emsp;&emsp;  "rating": 7.0,<br>
-                &emsp;&emsp;  "cast": ["Jason Biggs", "Chris Klein", "Thomas Ian Nicholas"]<br>
-                &emsp;&emsp;}<br>
-                &emsp; ],<br>
-                &emsp; "tv_shows":<br>
-                &emsp; [<br>
-                &emsp;&emsp;{<br>
-                &emsp;&emsp; "name": "Friends",<br>
-                &emsp;&emsp; "start_year": 1994,<br>
-                &emsp;&emsp; "end_year": 2004,<br>
-                &emsp;&emsp; "rating": 9.0,<br>
-                &emsp;&emsp; "stars": ["Jennifer Aniston", "Courteney Cox", "David Schwimmer", "Matthew Perry", "Lisa Kudrow", "Matt LeBlanc"],<br>
-                &emsp;&emsp; "episodes": 236<br>
-                &emsp;&emsp;},<br>
-                &emsp;&emsp;{<br>
-                &emsp;&emsp; "name": "Two and a Half Men",<br>
-                &emsp;&emsp; "start_year": 2003,<br>
-                &emsp;&emsp; "end_year": 2015,<br>
-                &emsp;&emsp; "rating": 7.1,<br>
-                &emsp;&emsp; "stars": ["Jon Cryer", "Angus T. Jones", "Charlie Sheen", "Ashton Kutcher"],<br>
-                &emsp;&emsp; "episodes": 262<br>
-                &emsp;&emsp;}<br>
-                &emsp; ]<br>
-                &emsp;<br>
-                &emsp;}<br>
-                ]<br>
-            </p>
-        </section>
-
-        <section class="jsonexmp">
-            <h4>Part of the module from all the JSON</h4>
-            <p>
-                {<br>&emsp;"error":"Couldn't found Specific Genre"<br>}
-            </p>
-        </section>
+            <section class="jsonexmp">
+                <h4>Part of the module from all the JSON</h4>
+                <p>
+                    {<br>&emsp;<span>"error"</span>:"Couldn't found Specific Genre"<br>}
+                </p>
+            </section>
+        </div>
     </div>
 
 </body>
