@@ -18,24 +18,30 @@ app.get('/',(req,res)=>{
 })
 
 //return all data of cat_genres.json
-app.get('/getAllGenres',(req,res)=>{
+app.get('/getAllGenres',(req,res)=> {
     "use strict";
-      genres.getAllGenres().then((result)=>{
-          res.send(result);
-      });
-     })
+    try {
+        genres.getAllGenres().then((result) => {
+            res.json(result);
+        });
+    }
+    catch (err){
+        res.send(err);
+    }
+})
+
 
 //get params by POST and will return JSON of all data (Tv Shows and Movies) if it find the genres
 app.post('/getOneGenre/',(req,res)=>{
     "use strict";
-    console.log(`genre: ${req.body.cat}`);
-
-    genres.getSpecificGenres(req.body.cat).then((result)=>{
-        if(result.length==0)
-            res.json({"Error":"Couldn't found Specific Genre"});
-        else res.json(result);
-    });
-
+    try {
+        genres.getSpecificGenres(req.body.cat).then((result)=>{
+            res.json(result);
+        })
+    }
+    catch (errResult){
+        res.send(errResult);
+    }
 
 })
 
@@ -44,22 +50,18 @@ app.get('/getListofGenre/:genre/:movie_or_tvShow',(req,res)=>{
     "use strict";
     try {
         genres.getListofGenre(req.params.genre, req.params.movie_or_tvShow).then((result) => {
-            if(result.length==0){
-                res.json({"Error":"Genre Not Found"})
-            }
             res.json(result);
         });
     }
     catch (err){
-        res.json(err);
+        res.send(err);
     }
 })
 
 //friendly Page not fount ( 404 )
 app.all('*',(req,res)=>{
     "use strict";
-    res.status(404).send(`friendly 404 :)
-    Error DIR not found`);
+    res.status(404).json({"Error":"404 - Page not found"});
 })
 
 app.listen(port,
