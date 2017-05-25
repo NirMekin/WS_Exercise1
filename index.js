@@ -6,17 +6,10 @@ const   express     = require('express'),
         app         = express(),
         genres        = require('./genresMdl'),
         port        = process.env.PORT || 3000;
-        // mongoose    = require('mongoose'),
-        // consts      = require('./genresMdl/consts');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// mongoose.Promise = global.Promise;
-// mongoose.connect(consts.MLAB_KEY);
-// var     conn    = mongoose.connection;
-//
-// var     Genres  = require('./genresMdl/vod_modle');
 
 //return API of WS
 app.get('/',(req,res)=>{

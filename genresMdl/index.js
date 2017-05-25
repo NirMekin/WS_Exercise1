@@ -72,28 +72,3 @@ module.exports = class Genres{
 
 
      }
-
-
-
-
-
-
-
-// var tempdata = data.categories_genres;
-// var arr =[];
-//
-// for(let i=0 ; i<tempdata.length ; i++){
-//     let tempMovies = tempdata[i].movies;
-//     let tempTvShows = tempdata[i].tv_shows;
-//     for(let n=0 ; n<tempMovies.length ; n++){
-//         if(tempMovies[n].rating>=_rating && tempMovies[n].year==_year)
-//             arr.push(tempdata[i].movies[n]);
-//     }
-//     for(let n=0 ; n<tempTvShows.length ; n++){
-//         if(tempTvShows[n].rating>=_rating && tempTvShows[n].start_year<=_year && (tempTvShows[n].end_year>=_year || tempTvShows[n].end_year==0))
-//             arr.push(tempdata[i].tv_shows[n]);
-//     }
-// }
-// if(arr.length==0)
-//     return {"error": "no match"};
-// return arr;
