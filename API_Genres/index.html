@@ -175,18 +175,10 @@
             </section>
 
             <section class="methodAPI">
-                <h3><span>GET</span> Return Movies and Tv Shows by year and rating:</h3>
-                <a target="_blank" href="../getListYearAndRating/1999/6.5">ws-excercise-vod-genres.herokuapp.com/getListYearAndRating/:year/:rating</a>
-                <section class="params">require parameters: 'year' & 'rating'</section>
-                <section id="notes">
-                    <p>
-                        notes:<br><br>
-                        &emsp;1. movies with rating equal or higher to parameter 'rating' and their <br>&emsp;&emsp;year equal to 'year' parameter will be return<br><br>
-                        &emsp;2. Tv Shows with rating equal or higher to parameter 'rating' and their<br>&emsp;&emsp;year of broadcast are in the range of 'year' parameter will be return<br><br>
-                        &emsp;3. Tv-Shows with 'end_year' = 0 indicates they still broadcast up today<br><br>
-                        &emsp;4. The value for Key 'episodes' indicates of the amount of episodes of<br>&emsp;&emsp;specific Tv Show
-                    </p>
-                </section>
+                <h3><span>GET</span> Return list of Movies or Tv Shows of specific Genre:</h3>
+                <a target="_blank" href="../getListofGenre/comedy/tv_shows">ws-excercise-vod-genres.herokuapp.com/getListofGenre/:genre/:tv_shows (or :movies)</a>
+                <section class="params">require parameters: 'genre' & movies/tv_shows</section>
+
             </section>
         </div>
         <div id="container2">
