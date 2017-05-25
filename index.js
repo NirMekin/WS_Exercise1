@@ -28,7 +28,6 @@ app.get('/getAllGenres',(req,res)=>{
 //get params by POST and will return JSON of all data (Tv Shows and Movies) if it find the genres
 app.post('/getOneGenre/',(req,res)=>{
     "use strict";
-    // res.status(200).json(genres.getSpecificGenres(req.body.cat));
     console.log(`genre: ${req.body.cat}`);
 
     genres.getSpecificGenres(req.body.cat).then((result)=>{
@@ -54,8 +53,6 @@ app.get('/getListofGenre/:genre/:movie_or_tvShow',(req,res)=>{
     catch (err){
         res.json(err);
     }
-    // res.status(200).json(genres.getListYearAndRating(req.params.year,req.params.rating));
-
 })
 
 //friendly Page not fount ( 404 )
