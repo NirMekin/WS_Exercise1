@@ -18,11 +18,7 @@ conn.on('error',
         console.log(`connection error: ${err}`);
         return err;
     });
-conn.once('open',
-    ()=> {
-    "use strict";
-        console.log("Connected to DB");
-    });
+
 module.exports = class Genres{
 
     //return all JSON

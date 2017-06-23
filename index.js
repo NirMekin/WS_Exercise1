@@ -20,6 +20,7 @@ app.get('/',(req,res)=>{
 //return all data of cat_genres.json
 app.get('/getAllGenres',(req,res)=> {
     "use strict";
+    res.setHeader('Access-Control-Allow-Origin','*');
     try {
         genres.getAllGenres().then((result) => {
             res.json(result);
@@ -34,6 +35,7 @@ app.get('/getAllGenres',(req,res)=> {
 //get params by POST and will return JSON of all data (Tv Shows and Movies) if it find the genres
 app.post('/getOneGenre/',(req,res)=>{
     "use strict";
+    res.setHeader('Access-Control-Allow-Origin','*');
     try {
         genres.getSpecificGenres(req.body.cat).then((result)=>{
             res.json(result);
@@ -48,6 +50,7 @@ app.post('/getOneGenre/',(req,res)=>{
 //Get Json with specific list of movies or tv shows of the genre
 app.get('/getListofGenre/:genre/:movie_or_tvShow',(req,res)=>{
     "use strict";
+    res.setHeader('Access-Control-Allow-Origin','*');
     try {
         genres.getListofGenre(req.params.genre, req.params.movie_or_tvShow).then((result) => {
             res.json(result);
@@ -61,6 +64,7 @@ app.get('/getListofGenre/:genre/:movie_or_tvShow',(req,res)=>{
 //friendly Page not fount ( 404 )
 app.all('*',(req,res)=>{
     "use strict";
+    res.setHeader('Access-Control-Allow-Origin','*');
     res.status(404).json({"Error":"404 - Page not found"});
 })
 
